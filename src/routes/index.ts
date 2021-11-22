@@ -6,6 +6,7 @@ import AuthRouter from './auth';
 import userRouter from './user';
 import { isLoggedIn } from '../middleware/admin';
 
+
 const router = Router();
 
 router.use('/auth', AuthRouter);
@@ -13,5 +14,7 @@ router.use('/products', productsRouter);
 router.use('/car', isLoggedIn, carRouter);
 router.use('/user', userRouter);
 router.use('*', HandleError.genericError)
+
+
 
 export default router;
