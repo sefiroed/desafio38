@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Connection} from 'mongoose';
 import {
   newProductI,
   ProductI,
@@ -6,6 +6,8 @@ import {
   ProductQuery,
 } from '../products.interface';
 import Config from '../../../config';
+
+mongoose.Promise = global.Promise;
 
 const productsSchema = new mongoose.Schema<ProductI>({
   name: String,
@@ -15,11 +17,18 @@ const productsSchema = new mongoose.Schema<ProductI>({
 export class ProductsAtlasDAO implements ProductBaseClass {
   private srv: string;
   private products;
+  // private instance: number;
+  private connection: Connection;
 
   constructor(local: boolean = false) {
     this.srv = `mongodb://localhost:27017/${Config.MONGO_LOCAL_DBNAME}`;
     mongoose.connection.useDb(this.srv ? this.srv : Config.MONGO_ATLAS_SRV);
+    this.connection = mongoose.createConnection(this.srv);
     this.products = mongoose.model<ProductI>('product', productsSchema);
+  }
+
+  getConnection() {
+    return this.connection;
   }
 
   async get(id?: string): Promise<ProductI[]> {
@@ -75,3 +84,7 @@ export class ProductsAtlasDAO implements ProductBaseClass {
     return this.products.find(query);
   }
 }
+
+
+export const MongoAtlas = new ProductsAtlasDAO(true);
+export const MongoLocal = new ProductsAtlasDAO();

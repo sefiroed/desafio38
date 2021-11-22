@@ -8,6 +8,8 @@ const venv = {
   MONGO_ATLAS_CLUSTER: process.env.MONGO_ATLAS_CLUSTER || 'clusterUrl',
   MONGO_ATLAS_DBNAME: process.env.MONGO_ATLAS_DBNAME || 'dbName',
   MONGO_LOCAL_DBNAME: process.env.MONGO_LOCAL_DBNAME || 'dbNameLocal',
+  MONGO_LOCAL_URL:
+    process.env.MONGO_LOCAL_URL || 'mongodb://mongodb0.example.com:27017',
   MONGO_ATLAS_SRV: process.env.MONGO_ATLAS_SRV || 'mongosrv',
   GMAIL_EMAIL: process.env.GMAIL_EMAIL || 'email@gmail.email',
   GMAIL_PASSWORD: process.env.GMAIL_PASSWORD || 'password',

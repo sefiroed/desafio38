@@ -26,7 +26,7 @@ export class NewFactoryDAO {
 
       case TypePersistence.MongoAtlas:
         console.log('RETURN INSTANCE CLASS MONGO ATLAS');
-        return new ProductsAtlasDAO();
+        return new ProductsAtlasDAO(true);
 
       case TypePersistence.Firebase:
         console.log('RETURN INSTANCE CLASS Firebase');
