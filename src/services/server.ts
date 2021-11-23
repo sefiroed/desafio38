@@ -60,8 +60,8 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
   
 app.use(errorHandler);
 
-const myServer = new http.Server(app);
-
+// const myServer = new http.Server(app);
+const myServer = http.createServer(app);
 
 export default myServer;
 

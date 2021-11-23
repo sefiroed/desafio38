@@ -1,6 +1,6 @@
 import { TaskTC } from '../models/task/taskgraphql';
 
-const TaskQuery = {
+export const TaskQuery = {
   taskById: TaskTC.getResolver('findById'),
   taskByIds: TaskTC.getResolver('findByIds'),
   taskOne: TaskTC.getResolver('findOne'),
@@ -10,7 +10,7 @@ const TaskQuery = {
   taskPagination: TaskTC.getResolver('pagination'),
 };
 
-const TaskMutation = {
+export const TaskMutation = {
   taskCreateOne: TaskTC.getResolver('createOne'),
   taskCreateMany: TaskTC.getResolver('createMany'),
   taskUpdateById: TaskTC.getResolver('updateById'),
@@ -20,5 +20,3 @@ const TaskMutation = {
   taskRemoveOne: TaskTC.getResolver('removeOne'),
   taskRemoveMany: TaskTC.getResolver('removeMany'),
 };
-
-module.exports = { TaskQuery, TaskMutation };
